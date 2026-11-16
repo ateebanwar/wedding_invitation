@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build output
+dist/
+dist-ssr/
+build/
+
+# Test & Temporary files
+test-screenshots/
+test-screenshots-v2/
+.temp-profile*/
+*.log
+*.tmp
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
+*.local
+.vscode/*
+!.vscode/extensions.json
+.idea/
