@@ -65,9 +65,9 @@
     "urduArea": "گلشنِ یاسین، مالیگاؤں",
     "fullAddress": "Masjid Javeed Munawwar, Gulshan-e-Yaseen, Malegaon, Dist. Nasik, Maharashtra",
     "urduFullAddress": "مسجد جاوید منور، گلشنِ یاسین، مالیگاؤں، ضلع ناسک",
-    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Masjid+Javeed+Munawwar+Gulshan-e-Yaseen+Malegaon",
-    "latitude": null,
-    "longitude": null
+    "googleMapsUrl": "https://www.google.com/maps/place/20%C2%B032'09.6%22N+74%C2%B032'06.1%22E/@20.535988,74.5343943,164m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d20.535988!4d74.535038!5m1!1e4?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "latitude": 20.536000,
+    "longitude": 74.535028
   },
   "family": {
     "inviteHeader": "❖ Invite ❖",
