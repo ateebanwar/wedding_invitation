@@ -89,49 +89,52 @@ export const WeddingCeremony: React.FC<WeddingCeremonyProps> = ({ content }) => 
         </div>
       </div>
 
-      {/* Main Arched Invitation Ceremony Card with Prominent 5px Glass Border */}
-      <div
-        className={`relative w-full max-w-[520px] rounded-t-[150px] rounded-b-3xl glass-card-border shadow-2xl p-6 sm:p-10 transition-all duration-300 overflow-hidden ${
-          isUrdu ? 'text-right urdu-text' : 'text-center'
-        }`}
-        dir={isUrdu ? 'rtl' : 'ltr'}
-      >
+      {/* Main Arched Invitation Ceremony Card with Layered Glass Over Paper */}
+      <div className="relative w-full max-w-[510px] mx-auto rounded-t-[150px] rounded-b-[36px] card-glass-outer p-2.5 xs:p-3 sm:p-4.5 select-none shadow-2xl overflow-hidden">
         {/* Top Specular Glare Reflection Beam across Arch */}
         <div className="absolute top-0 left-0 right-0 h-48 rounded-t-[146px] glass-reflection-overlay pointer-events-none opacity-70 z-20" />
-        {/* Inner Hairline Highlight Rim */}
-        <div className="absolute inset-2 rounded-t-[142px] rounded-b-[22px] border border-white/70 pointer-events-none z-20" />
-        {/* Ornate Double Inner Arch Border */}
-        <div className="absolute inset-2 border border-[#c59b27]/30 rounded-t-[142px] rounded-b-xl pointer-events-none" />
-        <div className="absolute inset-3 border border-[#dfba73]/15 rounded-t-[135px] rounded-b-lg pointer-events-none" />
+        {/* Outer Glass Bevel Rim */}
+        <div className="absolute inset-1.5 xs:inset-2 rounded-t-[142px] rounded-b-[28px] border border-white/70 pointer-events-none z-20" />
 
-        {/* Top Arch Center Rosette */}
-        <div className="w-full flex justify-center mb-4">
-          <svg viewBox="0 0 160 36" className="w-36 h-9 text-[#c59b27]" fill="none">
-            <path
-              d="M10 32 C40 32, 60 16, 80 4 C100 16, 120 32, 150 32"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            />
-            <circle cx="80" cy="4" r="3" fill="#c59b27" />
-          </svg>
-        </div>
+        {/* Inner Floating Luxury Paper Sheet */}
+        <div
+          className={`relative z-10 w-full rounded-t-[136px] rounded-b-[24px] card-paper-inner p-5 sm:p-9 shadow-lg border border-[#c59b27]/35 overflow-hidden bg-[#fdfbf7]/95 transition-all duration-300 ${
+            isUrdu ? 'text-right urdu-text' : 'text-center'
+          }`}
+          dir={isUrdu ? 'rtl' : 'ltr'}
+        >
+          {/* Ornate Double Inner Arch Border */}
+          <div className="absolute inset-2 border border-[#c59b27]/30 rounded-t-[130px] rounded-b-xl pointer-events-none" />
+          <div className="absolute inset-3 border border-[#dfba73]/15 rounded-t-[124px] rounded-b-lg pointer-events-none" />
 
-        {/* 1. Invocation */}
-        <div className="mb-6 space-y-1 text-center">
-          <p className="font-arabic text-lg sm:text-xl text-[#73162f] leading-loose" dir="rtl">
-            {invocation?.arabic}
-          </p>
-          <p className={`text-xs text-[#5c4033] tracking-wide leading-relaxed ${isUrdu ? 'font-urdu text-sm' : 'font-serif italic'}`}>
-            {isUrdu ? invocation?.urdu : invocation?.english}
-          </p>
-        </div>
+          {/* Top Arch Center Rosette */}
+          <div className="w-full flex justify-center mb-4">
+            <svg viewBox="0 0 160 36" className="w-36 h-9 text-[#c59b27]" fill="none">
+              <path
+                d="M10 32 C40 32, 60 16, 80 4 C100 16, 120 32, 150 32"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <circle cx="80" cy="4" r="3" fill="#c59b27" />
+            </svg>
+          </div>
 
-        {/* 2. Invitation Title */}
-        <div className="text-center mb-6">
-          <span className="inline-block px-4 py-1 rounded-full bg-[#73162f]/8 text-[#73162f] text-xs font-serif font-bold tracking-[0.2em] uppercase border border-[#c59b27]/30">
-            {isUrdu ? 'دعوتِ تقریبِ نکاح' : 'Wedding Invitation'}
-          </span>
-        </div>
+          {/* 1. Invocation */}
+          <div className="mb-6 space-y-1 text-center">
+            <p className="font-arabic text-lg sm:text-xl text-[#73162f] leading-loose" dir="rtl">
+              {invocation?.arabic}
+            </p>
+            <p className={`text-xs text-[#5c4033] tracking-wide leading-relaxed ${isUrdu ? 'font-urdu text-sm' : 'font-serif italic'}`}>
+              {isUrdu ? invocation?.urdu : invocation?.english}
+            </p>
+          </div>
+
+          {/* 2. Invitation Title */}
+          <div className="text-center mb-6">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#73162f]/8 text-[#73162f] text-xs font-serif font-bold tracking-[0.2em] uppercase border border-[#c59b27]/30">
+              {isUrdu ? 'دعوتِ تقریبِ نکاح' : 'Wedding Invitation'}
+            </span>
+          </div>
 
         {/* 3. Groom Details */}
         <div className="space-y-1 my-3 text-center">
@@ -252,6 +255,7 @@ export const WeddingCeremony: React.FC<WeddingCeremonyProps> = ({ content }) => 
           </div>
         )}
 
+        </div>
       </div>
     </section>
   );

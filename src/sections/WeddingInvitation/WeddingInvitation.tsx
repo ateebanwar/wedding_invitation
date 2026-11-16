@@ -18,16 +18,16 @@ export const WeddingInvitation: React.FC<WeddingInvitationProps> = ({ content })
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#f5efe6]/40 to-[#ede2d1]/60 pointer-events-none" />
 
       {/* ================= 1. TRANSPARENT GLASS-LIKE OUTER LAYER ================= */}
-      <div className="relative w-full max-w-[500px] rounded-t-[150px] rounded-b-[36px] card-glass-outer p-3.5 sm:p-4.5 select-none shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-[500px] mx-auto rounded-t-[150px] rounded-b-[36px] card-glass-outer p-2.5 xs:p-3 sm:p-4.5 select-none shadow-2xl overflow-hidden">
         
         {/* Specular Gloss Reflection Beam across the glass surface */}
         <div className="absolute top-0 left-0 right-0 h-48 rounded-t-[146px] glass-reflection-overlay pointer-events-none opacity-70 z-20" />
 
         {/* Outer glass highlight rim for layered depth */}
-        <div className="absolute inset-2 rounded-t-[140px] rounded-b-[28px] border border-white/70 pointer-events-none z-20" />
+        <div className="absolute inset-1.5 xs:inset-2 rounded-t-[140px] rounded-b-[28px] border border-white/70 pointer-events-none z-20" />
 
         {/* ================= 2. REALISTIC PAPER SHEET INSIDE GLASS LAYER ================= */}
-        <div className="relative z-10 w-full rounded-t-[136px] rounded-b-[24px] card-paper-inner p-6 sm:p-10 text-center shadow-lg border border-[#c59b27]/35 overflow-hidden bg-[#fdfbf7]/95">
+        <div className="relative z-10 w-full rounded-t-[136px] rounded-b-[24px] card-paper-inner p-5 sm:p-10 text-center shadow-lg border border-[#c59b27]/35 overflow-hidden bg-[#fdfbf7]/95">
           
           {/* Inner Ornate Double Border on the Paper */}
           <div className="absolute inset-2 border border-[#c59b27]/25 rounded-t-[130px] rounded-b-xl pointer-events-none" />

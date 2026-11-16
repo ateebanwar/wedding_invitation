@@ -40,19 +40,21 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
       onStartAudio();
     }
 
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      defaults: { ease: 'power2.inOut' },
+    });
 
     // ================= STAGE 1: SEAL ACTIVATION =================
-    // Wax seal presses in slightly with golden radiance flare
+    // Quick, responsive wax seal press & radiant glow
     tl.to(sealWrapperRef.current, {
-      scale: 0.93,
-      duration: 0.2,
+      scale: 0.94,
+      duration: 0.16,
       ease: 'power2.in',
     })
       .to(sealWrapperRef.current, {
-        scale: 1.08,
-        filter: 'drop-shadow(0 0 25px rgba(223, 186, 115, 0.95))',
-        duration: 0.3,
+        scale: 1.06,
+        filter: 'drop-shadow(0 0 20px rgba(223, 186, 115, 0.9))',
+        duration: 0.22,
         ease: 'power2.out',
       })
       // Fade out the TAP TO OPEN button and prompt
@@ -60,25 +62,26 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
         tapButtonWrapperRef.current,
         {
           opacity: 0,
-          y: 12,
-          duration: 0.3,
+          y: 10,
+          duration: 0.2,
           ease: 'power2.in',
         },
-        '-=0.25'
+        '-=0.18'
       );
 
     // ================= STAGE 2: 3D TOP FLAP ROTATION =================
-    // Triangular flap rotates naturally upward around its top hinge in 3D (180deg)
+    // Triangular flap flips open naturally around top hinge in 3D
     if (topFlapRef.current) {
       tl.to(
         topFlapRef.current,
         {
           rotateX: 180,
           transformOrigin: 'top center',
-          duration: 1.0,
+          duration: 0.7,
           ease: 'power2.inOut',
+          force3D: true,
         },
-        '-=0.1'
+        '-=0.08'
       );
 
       // Fade out wax seal as flap turns away
@@ -86,10 +89,10 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
         sealWrapperRef.current,
         {
           opacity: 0,
-          duration: 0.35,
+          duration: 0.25,
           ease: 'power1.out',
         },
-        '-=0.75'
+        '-=0.55'
       );
 
       // Place flipped flap behind card path (z-5) so card slides up in front of it
@@ -100,31 +103,33 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
 
     // ================= STAGE 3: REALISTIC VERTICAL EXTRACTION =================
     // Envelope glides downward while full-width card slides straight vertically UPWARD out of the pocket!
-    // Because frontPocketRef is at z-20 and invitationCardRef is at z-10, the card emerges
-    // naturally through the top "V" opening, with its bottom masked behind the front pocket.
+    // Front pocket is at z-20, card is at z-10 -> physically extracted through top "V" opening.
     const envelopeElements = [backPanelRef.current, frontPocketRef.current, topFlapRef.current];
 
     tl.to(
       envelopeElements,
       {
-        y: 120,
-        duration: 1.4,
+        y: 90,
+        duration: 0.85,
         ease: 'power2.inOut',
+        force3D: true,
       },
       'extract'
     ).to(
       invitationCardRef.current,
       {
-        y: -240, // ONLY animate y! Strictly vertical upward translation!
-        duration: 1.4,
+        y: -230, // Strictly vertical upward translation out through the top opening
+        duration: 0.85,
         ease: 'power2.inOut',
+        force3D: true,
       },
       'extract'
     );
 
-    // ================= STAGE 4: EXPANSION & FULLSCREEN SETTLEMENT =================
+    // ================= STAGE 4: EXPANSION & SETTLEMENT =================
     // Card has completely cleared the pocket! Elevate z-index to 60.
-    // Card glides smoothly down to center and scales up toward viewer.
+    // Card glides smoothly down to resting position (y: 0, scale: 1).
+    // ZERO scale discrepancy: card dimensions remain 100% continuous and identical!
     tl.set(invitationCardRef.current, {
       zIndex: 60,
     });
@@ -133,28 +138,30 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
       invitationCardRef.current,
       {
         y: 0,
-        scale: 1.04,
-        duration: 1.3,
-        ease: 'power3.inOut',
+        scale: 1,
+        duration: 0.75,
+        ease: 'power2.out',
+        force3D: true,
         onComplete: () => {
           setHasSettled(true);
           onOpenComplete();
         },
       },
-      '+=0.05'
+      '+=0.02'
     );
 
-    // Envelope fades out and drops down as the card takes over
+    // Envelope drops down and fades out cleanly
     tl.to(
       envelopeElements,
       {
         opacity: 0,
-        y: 280,
-        scale: 0.86,
-        duration: 0.95,
+        y: 200,
+        scale: 0.9,
+        duration: 0.65,
         ease: 'power2.inOut',
+        force3D: true,
       },
-      '-=1.1'
+      '-=0.6'
     );
   };
 
@@ -258,10 +265,10 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
       {/* Houses the discrete 3D layers: Back Panel, Flap, Card, and Front Pocket */}
       <div
         ref={stageWrapperRef}
-        className={`relative w-full ${
+        className={`relative w-[92%] max-w-[420px] sm:max-w-[450px] mx-auto ${
           hasSettled
-            ? 'max-w-[520px] mx-auto'
-            : 'w-[88%] max-w-[390px] h-[580px] sm:h-[620px] mx-auto'
+            ? 'min-h-[580px] sm:min-h-[620px]'
+            : 'h-[580px] sm:h-[620px]'
         }`}
         style={{ transformStyle: 'preserve-3d' }}
       >
@@ -303,15 +310,12 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
                   <stop offset="65%" stopColor="#c59b27" />
                   <stop offset="100%" stopColor="#fcedc5" />
                 </linearGradient>
-                <filter id="pipingGlowTrue" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="1.5" stdDeviation="1.2" floodColor="#541223" floodOpacity="0.25" />
-                </filter>
               </defs>
               <polyline
                 points="0,0 195,318 390,0"
                 stroke="url(#flapGoldBevelTrue)"
                 strokeWidth="3.2"
-                filter="url(#pipingGlowTrue)"
+                className="drop-shadow-sm"
                 fill="none"
               />
             </svg>
@@ -320,20 +324,19 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
         )}
 
         {/* ================= LAYER 3: THE INVITATION CARD (z-10 -> z-60) ================= */}
-        {/* Sandwiched between Back Panel (z-1) and Front Pocket (z-20) while inside! */}
-        {/* Maintains full width (inset-x-2 inset-y-2), slides straight UPWARD through the top opening, then expands forward. */}
+        {/* Sandwiched between Back Panel (z-1) and Front Pocket (z-20) while inside */}
+        {/* Continuous 100% identical dimensions: no shrinking, no snapping! */}
         <div
           ref={invitationCardRef}
-          className={`rounded-[28px] sm:rounded-[34px] card-glass-outer p-2.5 sm:p-3.5 select-text shadow-2xl relative overflow-hidden ${
+          className={`rounded-[28px] sm:rounded-[34px] p-2.5 sm:p-3.5 select-text shadow-2xl overflow-hidden ${
             hasSettled
-              ? 'relative w-full max-w-[520px] mx-auto'
-              : 'absolute inset-x-2 inset-y-2'
+              ? 'card-glass-outer relative w-full min-h-[580px] sm:min-h-[620px] mx-auto z-60'
+              : 'card-glass-animating absolute inset-0 w-full h-full gpu-accelerated z-10'
           }`}
           style={
             hasSettled
-              ? { zIndex: 60 }
+              ? undefined
               : {
-                  zIndex: 10,
                   transformOrigin: 'center center',
                 }
           }
@@ -496,12 +499,9 @@ export const EnvelopeOpening: React.FC<EnvelopeOpeningProps> = ({
                   <stop offset="75%" stopColor="#c59b27" />
                   <stop offset="100%" stopColor="#fef3d8" />
                 </linearGradient>
-                <filter id="creaseShadowReal" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="1" stdDeviation="1" floodColor="#541223" floodOpacity="0.2" />
-                </filter>
               </defs>
-              <line x1="0" y1="600" x2="195" y2="318" stroke="url(#foldGoldGradientReal)" strokeWidth="3" filter="url(#creaseShadowReal)" opacity="0.95" />
-              <line x1="390" y1="600" x2="195" y2="318" stroke="url(#foldGoldGradientReal)" strokeWidth="3" filter="url(#creaseShadowReal)" opacity="0.95" />
+              <line x1="0" y1="600" x2="195" y2="318" stroke="url(#foldGoldGradientReal)" strokeWidth="3" className="drop-shadow-xs" opacity="0.95" />
+              <line x1="390" y1="600" x2="195" y2="318" stroke="url(#foldGoldGradientReal)" strokeWidth="3" className="drop-shadow-xs" opacity="0.95" />
             </svg>
 
             {/* Outer Beveled Glass Border */}

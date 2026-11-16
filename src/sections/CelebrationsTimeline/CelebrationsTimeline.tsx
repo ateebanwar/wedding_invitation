@@ -250,18 +250,21 @@ export const CelebrationsTimeline: React.FC<CelebrationsTimelineProps> = ({ cont
         {/* Event Cards placed on alternate sides with Ample Breathing Room */}
         <div className="relative z-10 flex flex-col justify-between min-h-[1100px] sm:min-h-[1200px] py-8">
           
-          {/* 1. NIKAH EVENT CARD (Left / Top milestone with Prominent Glassmorphism) */}
-          <div className="flex justify-start pl-1 sm:pl-4 pr-6 sm:pr-24">
+          {/* 1. NIKAH EVENT CARD (Left / Top milestone with Glass Over Paper) */}
+          <div className="flex justify-start pl-1 sm:pl-4 pr-3 xs:pr-6 sm:pr-24">
             <div
               ref={nikahCardRef}
-              className="relative w-full max-w-[360px] sm:max-w-[430px] rounded-[28px] glass-card-border shadow-2xl overflow-hidden p-6 sm:p-8"
+              className="relative w-full max-w-[360px] sm:max-w-[430px] rounded-[28px] card-glass-outer shadow-2xl overflow-hidden p-2.5 xs:p-3 sm:p-4 select-none"
             >
               {/* Top Specular Glare Reflection Beam */}
-              <div className="absolute top-0 left-0 right-0 h-36 rounded-t-[24px] glass-reflection-overlay pointer-events-none opacity-70" />
-              {/* Inner Hairline Highlight Rim */}
-              <div className="absolute inset-1.5 rounded-[22px] border border-white/70 pointer-events-none" />
+              <div className="absolute top-0 left-0 right-0 h-36 rounded-t-[24px] glass-reflection-overlay pointer-events-none opacity-70 z-20" />
+              {/* Outer Glass Bevel Rim */}
+              <div className="absolute inset-1.5 rounded-[22px] border border-white/70 pointer-events-none z-20" />
 
-              <div className="relative z-10">
+              {/* Inner Floating Luxury Paper Sheet */}
+              <div className="relative z-10 w-full rounded-[20px] card-paper-inner p-4 xs:p-5 sm:p-7 shadow-lg border border-[#c59b27]/35 bg-[#fdfbf7]/95">
+                <div className="absolute inset-1 border border-[#c59b27]/20 rounded-[16px] pointer-events-none" />
+
                 <div className="flex items-center justify-between mb-3">
                   <span className="px-3.5 py-1 rounded-full bg-[#73162f]/10 text-[#73162f] text-[11px] font-serif font-bold uppercase tracking-wider border border-[#c59b27]/40 shadow-xs">
                     {validEvents[0]?.badge || 'Main Ceremony'}
@@ -269,7 +272,7 @@ export const CelebrationsTimeline: React.FC<CelebrationsTimelineProps> = ({ cont
                   <Sparkles className="w-4 h-4 text-[#c59b27]" />
                 </div>
 
-                <h3 className="font-calligraphy text-3xl sm:text-4xl text-[#73162f] font-bold">
+                <h3 className="font-calligraphy text-2xl xs:text-3xl sm:text-4xl text-[#73162f] font-bold">
                   {validEvents[0]?.title || 'Nikah'}
                 </h3>
                 <p className="font-arabic text-base sm:text-lg text-[#b88c24] font-semibold mt-0.5" dir="rtl">
@@ -296,18 +299,21 @@ export const CelebrationsTimeline: React.FC<CelebrationsTimelineProps> = ({ cont
             </div>
           </div>
 
-          {/* 2. WALIMA EVENT CARD (Right / Bottom milestone with Prominent Glassmorphism) */}
-          <div className="flex justify-end pr-1 sm:pr-4 pl-6 sm:pl-24">
+          {/* 2. WALIMA EVENT CARD (Right / Bottom milestone with Glass Over Paper) */}
+          <div className="flex justify-end pr-1 sm:pr-4 pl-3 xs:pl-6 sm:pl-24">
             <div
               ref={walimaCardRef}
-              className="relative w-full max-w-[360px] sm:max-w-[430px] rounded-[28px] glass-card-border shadow-2xl overflow-hidden p-6 sm:p-8"
+              className="relative w-full max-w-[360px] sm:max-w-[430px] rounded-[28px] card-glass-outer shadow-2xl overflow-hidden p-2.5 xs:p-3 sm:p-4 select-none"
             >
               {/* Top Specular Glare Reflection Beam */}
-              <div className="absolute top-0 left-0 right-0 h-36 rounded-t-[24px] glass-reflection-overlay pointer-events-none opacity-70" />
-              {/* Inner Hairline Highlight Rim */}
-              <div className="absolute inset-1.5 rounded-[22px] border border-white/70 pointer-events-none" />
+              <div className="absolute top-0 left-0 right-0 h-36 rounded-t-[24px] glass-reflection-overlay pointer-events-none opacity-70 z-20" />
+              {/* Outer Glass Bevel Rim */}
+              <div className="absolute inset-1.5 rounded-[22px] border border-white/70 pointer-events-none z-20" />
 
-              <div className="relative z-10">
+              {/* Inner Floating Luxury Paper Sheet */}
+              <div className="relative z-10 w-full rounded-[20px] card-paper-inner p-4 xs:p-5 sm:p-7 shadow-lg border border-[#c59b27]/35 bg-[#fdfbf7]/95">
+                <div className="absolute inset-1 border border-[#c59b27]/20 rounded-[16px] pointer-events-none" />
+
                 <div className="flex items-center justify-between mb-3">
                   <span className="px-3.5 py-1 rounded-full bg-[#73162f]/10 text-[#73162f] text-[11px] font-serif font-bold uppercase tracking-wider border border-[#c59b27]/40 shadow-xs">
                     {validEvents[1]?.badge || 'Reception Banquet'}
@@ -315,7 +321,7 @@ export const CelebrationsTimeline: React.FC<CelebrationsTimelineProps> = ({ cont
                   <Heart className="w-4 h-4 text-[#c59b27]" />
                 </div>
 
-                <h3 className="font-calligraphy text-3xl sm:text-4xl text-[#73162f] font-bold">
+                <h3 className="font-calligraphy text-2xl xs:text-3xl sm:text-4xl text-[#73162f] font-bold">
                   {validEvents[1]?.title || 'Walima'}
                 </h3>
                 <p className="font-arabic text-base sm:text-lg text-[#b88c24] font-semibold mt-0.5" dir="rtl">
