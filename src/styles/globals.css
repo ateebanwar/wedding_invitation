@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-ivory: #faf7f2;
+    --color-cream: #f5efe6;
+    --color-burgundy: #73162f;
+    --color-burgundy-deep: #460d19;
+    --color-gold: #c59b27;
+    --color-gold-champagne: #e8d4a6;
+    --color-charcoal: #2c2724;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  /* Strict scroll lock class */
+  body.scroll-locked,
+  html.scroll-locked {
+    overflow: hidden !important;
+    height: 100% !important;
+    touch-action: none !important;
+    -ms-touch-action: none !important;
+  }
+
+  /* Urdu and Arabic specific typography rules */
+  [dir="rtl"] {
+    font-family: 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', 'Amiri', serif;
+    letter-spacing: 0;
+    line-height: 2.2;
+  }
+
+  .urdu-text {
+    font-family: 'Noto Nastaliq Urdu', 'Urdu Typesetting', 'Amiri', serif;
+    line-height: 2.3;
+    letter-spacing: 0.01em;
+  }
+
+  .arabic-text {
+    font-family: 'Noto Naskh Arabic', 'Amiri', 'Traditional Arabic', serif;
+    line-height: 1.8;
+  }
+}
+
+/* Luxury Paper Texture Effect */
+.bg-parchment {
+  background-color: transparent;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(245, 239, 230, 0.15) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+/* Symmetrical Diagonal Satin Weave for Envelope Backdrop */
+.bg-satin-weave {
+  background-color: #faf5ec;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(245, 238, 226, 0.7) 60%, rgba(235, 224, 206, 0.9) 100%),
+    repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.025) 0px, rgba(212, 175, 55, 0.025) 1px, transparent 1px, transparent 10px),
+    repeating-linear-gradient(-45deg, rgba(212, 175, 55, 0.025) 0px, rgba(212, 175, 55, 0.025) 1px, transparent 1px, transparent 10px);
+}
+
+/* Glassmorphism Envelope Container */
+.envelope-glass {
+  background: linear-gradient(145deg, rgba(253, 251, 247, 0.92) 0%, rgba(245, 238, 226, 0.88) 100%);
+  box-shadow: 
+    0 30px 70px -15px rgba(84, 18, 35, 0.16),
+    0 15px 35px -5px rgba(0, 0, 0, 0.08),
+    inset 0 2px 4px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 4px rgba(197, 155, 39, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+}
+
+/* Specular Reflection Glare */
+.glass-glare {
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.3) 25%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
+}
+
+/* Gold Gradient Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #b38b25 0%, #e6ca65 40%, #c59b27 70%, #8c6819 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-burgundy-gradient {
+  background: linear-gradient(135deg, #73162f 0%, #941e3d 50%, #460d19 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphic 5px Frosted Glass Card Border (Visibly prominent across ALL cards) */
+.glass-card-border {
+  border: 5px solid rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.76) 0%, rgba(252, 250, 244, 0.48) 50%, rgba(255, 255, 255, 0.72) 100%);
+  box-shadow: 
+    0 0 0 1px rgba(212, 175, 55, 0.38),
+    0 28px 65px -12px rgba(45, 60, 45, 0.22),
+    0 12px 28px -6px rgba(0, 0, 0, 0.08),
+    inset 0 2px 4px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -2px 4px 0 rgba(197, 155, 39, 0.25),
+    inset 0 0 20px 2px rgba(255, 255, 255, 0.45);
+}
+
+/* Glass + Paper Card Outer Shell */
+.card-glass-outer {
+  border: 5px solid rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(253, 250, 244, 0.52) 50%, rgba(255, 255, 255, 0.74) 100%);
+  box-shadow: 
+    0 0 0 1px rgba(212, 175, 55, 0.42),
+    0 30px 70px -12px rgba(45, 60, 45, 0.24),
+    0 14px 30px -6px rgba(0, 0, 0, 0.09),
+    inset 0 2.5px 5px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -2px 4px 0 rgba(197, 155, 39, 0.28),
+    inset 0 0 24px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Glass Specular Glare Overlay for realistic crystal shine */
+.glass-reflection-overlay {
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.2) 28%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+}
+
+.card-paper-inner {
+  background-color: #fdfbf7;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(247, 242, 233, 0.75) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  box-shadow: 
+    0 8px 24px -4px rgba(44, 39, 36, 0.08),
+    inset 0 0 0 1px rgba(197, 155, 39, 0.35);
+}
+
+/* Wax Seal Emboss */
+.wax-seal {
+  background: radial-gradient(circle at 35% 30%, #85162f 0%, #631226 45%, #420a16 85%, #2a050e 100%);
+  box-shadow: 
+    0 12px 28px -4px rgba(42, 5, 14, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.35),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* 3D Perspective Preservation */
+.perspective-1200 {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #faf7f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #c59b27;
+  border-radius: 3px;
+}
