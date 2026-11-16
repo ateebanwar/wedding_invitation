@@ -43,6 +43,8 @@ export const WeddingCeremony: React.FC<WeddingCeremonyProps> = ({ content }) => 
       longitude: venue?.longitude,
       googleMapsUrl: venue?.googleMapsUrl,
       address: venue?.fullAddress,
+      name: isUrdu ? venue?.urduName : venue?.name,
+      coordinatesDMS: venue?.coordinatesDMS,
     });
   };
 

@@ -48,6 +48,7 @@ export interface VenueData {
   googleMapsUrl: string;
   latitude: number | null;
   longitude: number | null;
+  coordinatesDMS?: string;
 }
 
 export interface FamilyData {

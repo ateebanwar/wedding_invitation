@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { WeddingContent } from '../../types/wedding';
 import { SectionDivider } from '../../components/SectionDivider/SectionDivider';
+import { openMapLocation } from '../../services/mapsService';
 import { Sparkles, Heart } from 'lucide-react';
 
 interface CelebrationsTimelineProps {
@@ -286,10 +287,25 @@ export const CelebrationsTimeline: React.FC<CelebrationsTimelineProps> = ({ cont
                   <p className="text-[#5c4033] italic font-semibold">
                     {validEvents[0]?.timeDescription}
                   </p>
-                  <p className="text-[#3d3835] text-xs pt-1 flex items-start gap-1 font-medium">
-                    <span>📍</span>
-                    <span>{validEvents[0]?.venue}, {validEvents[0]?.location}</span>
-                  </p>
+                  <div
+                    onClick={() => {
+                      if (content.venue) {
+                        openMapLocation({
+                          latitude: content.venue.latitude,
+                          longitude: content.venue.longitude,
+                          googleMapsUrl: content.venue.googleMapsUrl,
+                          address: content.venue.fullAddress,
+                          name: content.venue.name,
+                          coordinatesDMS: content.venue.coordinatesDMS,
+                        });
+                      }
+                    }}
+                    className="text-[#3d3835] hover:text-[#73162f] text-xs pt-1 flex items-start gap-1 font-medium cursor-pointer group select-none transition-colors"
+                    title="Open location in Google Maps"
+                  >
+                    <span className="group-hover:scale-125 transition-transform">📍</span>
+                    <span className="underline decoration-[#c59b27]/40 underline-offset-2 group-hover:decoration-[#73162f]">{validEvents[0]?.venue}, {validEvents[0]?.location}</span>
+                  </div>
                 </div>
 
                 <p className="mt-4 text-xs font-serif text-[#383330] leading-relaxed border-t border-[#c59b27]/30 pt-3">

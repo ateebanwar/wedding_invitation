@@ -1,6 +1,7 @@
 import React from 'react';
 import { WeddingContent } from '../../types/wedding';
 import { SectionDivider } from '../../components/SectionDivider/SectionDivider';
+import { openMapLocation } from '../../services/mapsService';
 
 interface WeddingInvitationProps {
   content: WeddingContent;
@@ -110,12 +111,28 @@ export const WeddingInvitation: React.FC<WeddingInvitationProps> = ({ content })
           </div>
 
           {/* 6. Venue */}
-          <div className="space-y-1 mb-6 py-3 px-4 rounded-xl bg-[#faf5ec]/80 border border-[#c59b27]/30 shadow-xs">
+          <div
+            onClick={() => {
+              if (venue) {
+                openMapLocation({
+                  latitude: venue.latitude,
+                  longitude: venue.longitude,
+                  googleMapsUrl: venue.googleMapsUrl,
+                  address: venue.fullAddress,
+                  name: venue.name,
+                  coordinatesDMS: venue.coordinatesDMS,
+                });
+              }
+            }}
+            className="space-y-1 mb-6 py-3 px-4 rounded-xl bg-[#faf5ec]/80 hover:bg-[#f5ecdc] border border-[#c59b27]/30 shadow-xs cursor-pointer group select-none transition-colors"
+            title="Open in Google Maps"
+          >
             <p className="font-serif text-xs uppercase tracking-widest text-[#c59b27] font-semibold">
               At Venue
             </p>
-            <p className="font-serif text-base text-[#73162f] font-bold">
-              {venue?.name}
+            <p className="font-serif text-base text-[#73162f] font-bold group-hover:text-[#941e3d] transition-colors flex items-center justify-center gap-1.5">
+              <span>{venue?.name}</span>
+              <span className="text-xs group-hover:scale-125 transition-transform">📍</span>
             </p>
             <p className="font-serif text-xs sm:text-sm text-[#423d3a]">
               {venue?.area}

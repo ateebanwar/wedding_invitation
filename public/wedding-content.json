@@ -65,7 +65,8 @@
     "urduArea": "گلشنِ یاسین، مالیگاؤں",
     "fullAddress": "Masjid Javeed Munawwar, Gulshan-e-Yaseen, Malegaon, Dist. Nasik, Maharashtra",
     "urduFullAddress": "مسجد جاوید منور، گلشنِ یاسین، مالیگاؤں، ضلع ناسک",
-    "googleMapsUrl": "https://www.google.com/maps/place/20%C2%B032'09.6%22N+74%C2%B032'06.1%22E/@20.535988,74.5343943,164m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d20.535988!4d74.535038!5m1!1e4?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "coordinatesDMS": "20°32'09.6\"N 74°32'06.1\"E",
+    "googleMapsUrl": "https://www.google.com/maps/place/20%C2%B032'09.6%22N+74%C2%B032'06.1%22E/@20.536000,74.535028,18z/data=!3m1!4b1!4m4!3m3!8m2!3d20.536000!4d74.535028",
     "latitude": 20.536000,
     "longitude": 74.535028
   },
@@ -193,7 +194,7 @@
     "invitationCardImage": "/assets/images/islamic-wedding-card.svg",
     "envelopeBackground": "/assets/textures/handmade-paper.webp",
     "cardTexture": "/assets/textures/ivory-card.webp",
-    "music": "/assets/audio/nasheed-ambient.mp3"
+    "music": "/assets/audio/starostin-arabic-islamic-muslim-music-523684.mp3"
   },
   "animation": {
     "envelopeOpenDuration": 1.6,
